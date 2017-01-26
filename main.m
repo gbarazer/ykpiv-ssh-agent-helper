@@ -337,7 +337,7 @@ void doWakeLoop(NSString *yubicoPivToolDir) {
     // XXX ideally, we should read this from the keychain every time we wake up
     // and then (attempt to?) scrub it from memory when we're done with it.
     
-    NSString *pkcs11Module = [yubicoPivToolDir stringByAppendingPathComponent:@"lib/libykcs11.dylib"];
+    NSString *pkcs11Module = @"/usr/local/lib/opensc-pkcs11.so";
     
     YKPIVSSHAgentHelper *helper = [[YKPIVSSHAgentHelper alloc] initWithPKCS11Path:pkcs11Module];
     
@@ -393,7 +393,7 @@ int main(int argc, const char *argv[]) {
     @autoreleasepool {
         bool resetPin = NO;
         bool reloadService = NO;
-        NSString *yubicoPivToolDir = @"/opt/yubico-piv-tool";
+        NSString *yubicoPivToolDir = @"/usr/local";
         NSString *launchAgentPlist = @"/Library/LaunchAgents/com.duosecurity.ykpiv-ssh-agent-helper.plist";
 
         struct option longopts[] = {
